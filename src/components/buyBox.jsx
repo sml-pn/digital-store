@@ -15,7 +15,7 @@ const BuyBox = ({
   const { addToCart } = useContext(useCart);
 
   const handleAddToCart = () => {
-    addToCart(product); 
+    addToCart(product);
   };
 
   return (
@@ -23,7 +23,7 @@ const BuyBox = ({
       <h1 className="text-2xl md:text-3xl font-semibold text-gray-800">{name}</h1>
       <p className="text-sm text-gray-400">{reference}</p>
       <div className="flex items-center gap-2">
-        <span className="text-yellow-500 font-medium">{stars} ★</span>
+        <span className="text-yellow-500 font-medium">{stars} ★ </span>
         <span className="text-sm text-gray-400">({rating} avaliações)</span>
       </div>
       <div className="flex items-center gap-4">
@@ -39,7 +39,8 @@ const BuyBox = ({
 
       <button
         onClick={handleAddToCart}
-        className="bg-pink-600 hover:bg-pink-700 text-white py-2 px-4 mt-4 rounded-xl text-base font-medium transition"
+        className="bg-pink-600 hover:bg-pink-700 text-white py-2 px-4 mt-4 rounded-xl text-base font-medium transition-all duration-200"
+        aria-label="Adicionar ao carrinho"
       >
         Comprar
       </button>
@@ -48,4 +49,3 @@ const BuyBox = ({
 };
 
 export default BuyBox;
-

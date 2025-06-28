@@ -7,7 +7,6 @@ const ProductCard = ({ product = {} }) => {
   const navigate = useNavigate();
 
   const isInCart = cartItems.some((item) => item.id === id);
-  console.log("Render Card", id, { isInCart, cartItems });
 
   const discountPercentage =
     typeof price === "number" &&
@@ -38,23 +37,24 @@ const ProductCard = ({ product = {} }) => {
   };
 
   return (
-    <div className="flex flex-col border rounded-lg overflow-hidden shadow-md bg-white transition hover:shadow-lg w-full">
-      <div className="relative h-56 md:h-60 flex items-center justify-center p-4">
+    <div className="flex flex-col overflow-hidden bg-[#f6f6f6] transition-all duration-300 w-full h-full">
+      <div className="relative h-56 md:h-60 flex items-center justify-center p-0 md:p-0 cursor-pointer">
         {discountPercentage && (
-          <span className="absolute top-2 left-2 bg-lime-200 text-xs font-bold text-gray-800 px-2 py-1 rounded">
+      <span className="absolute top-2 left-2 bg-lime-200 text-xs font-bold text-gray-800 px-2 py-1 rounded">
             {discountPercentage}% OFF
           </span>
         )}
         <img
           src={image}
           alt={`Imagem do produto ${name}`}
-          className="max-h-40 md:max-h-44 object-contain"
+          className="w-full h-full object-contain transition-transform duration-500 hover:scale-110 cursor-pointer"
+          loading="lazy"
         />
       </div>
 
-      <div className="p-4 flex flex-col gap-2">
-        <p className="text-sm text-gray-500">{category || "Produto"}</p>
-        <p className="font-medium text-sm">{name}</p>
+      <div className="p-4 flex flex-col gap-2 flex-grow">
+        <p className="text-sm text-gray-500 truncate">{category || "Produto"}</p>
+        <p className="font-medium text-sm line-clamp-2 min-h-[40px]">{name}</p>
 
         <div className="text-sm">
           {typeof price === "number" && priceDiscount && (
@@ -69,19 +69,20 @@ const ProductCard = ({ product = {} }) => {
 
         <button
           onClick={handleCartClick}
-          className={`mt-2 py-1 px-3 rounded text-sm transition font-semibold w-full ${
+          className={`mt-2 py-1 px-3 rounded text-sm transition-all duration-200 font-semibold w-full ${
             isInCart
               ? "bg-green-500 text-white hover:bg-green-600"
               : "bg-primary text-white hover:brightness-110"
           }`}
+          aria-label={isInCart ? "Remover do carrinho" : "Adicionar ao carrinho"}
         >
-          {console.log("Botão render:", id, isInCart)}
-          {isInCart ? "Adicionado ao carrinho" : "Adicionar ao carrinho"}
+          {isInCart ? "Adicionado ao carrinho ✓" : "Adicionar ao carrinho"}
         </button>
 
         <button
           onClick={handleViewMore}
-          className="text-sm px-3 py-1 rounded bg-gray-200 text-gray-800 font-medium hover:bg-gray-300 mt-1"
+          className="text-sm px-3 py-1 rounded bg-gray-200 text-gray-800 font-medium hover:bg-gray-300 mt-1 transition-all duration-200"
+          aria-label="Ver detalhes do produto"
         >
           Ver mais
         </button>
@@ -91,12 +92,3 @@ const ProductCard = ({ product = {} }) => {
 };
 
 export default ProductCard;
-
-
-
-
-
-
-
-
-

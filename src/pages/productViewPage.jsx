@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useCart } from '../contexts/cartContext';
 import { products } from '../data/products';
 import { useState } from 'react';
+import Layout from './Layout';
 
 const ProductViewPage = () => {
   const { id } = useParams();
@@ -12,6 +13,7 @@ const ProductViewPage = () => {
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
   const [added, setAdded] = useState(isInCart);
+  const [mainImage, setMainImage] = useState(product.image);
 
   const handleToggleCart = () => {
     if (added) {
@@ -30,12 +32,37 @@ const ProductViewPage = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
 
-      <div className="flex justify-center items-center bg-gray-100 p-8 rounded w-full max-w-full">
-        <img src={product.image} alt={product.name} className="object-contain max-h-[400px] w-full h-auto" />
+      {/* Área das imagens */}
+      <div className="bg-[#f6f6f6] p-4 rounded-lg">
+        {/* Imagem principal */}
+        <div className="flex justify-center items-center w-full aspect-square mb-4">
+          <img 
+            src={mainImage} 
+            alt={product.name} 
+            className="object-contain w-full h-full" 
+          />
+        </div>
+        
+        {/* Miniaturas */}
+        <div className="grid grid-cols-3 gap-2">
+          {product.images.map((img, index) => (
+            <button 
+              key={index}
+              onClick={() => setMainImage(img.src)}
+              className="aspect-square border rounded overflow-hidden duration-200 hover:shadow-lg hover:scale-105"
+            >
+              <img
+                src={img.src}
+                alt={`${product.name} - ${index + 1}`}
+                className="w-full h-full object-contain p-1"
+              />
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div className="flex flex-col w-full max-w-full">
-        <h1 className="text-2xl sm:text-3xl font-semibold mb-2">{product.name}</h1>
+      {/* Buybox - mantido exatamente como estava */}
+<div className="flex flex-col w-full max-h-[500px] bg-white p-4 rounded-lg shadow-md">        <h1 className="text-2xl sm:text-3xl font-semibold mb-2">{product.name}</h1>
         <p className="text-pink-700 text-xl sm:text-2xl font-bold mb-1">R$ {product.price.toFixed(2)}</p>
         <p className="text-gray-600 mb-6 text-sm sm:text-base">{product.description}</p>
 
@@ -79,7 +106,7 @@ const ProductViewPage = () => {
 
         <button
           onClick={handleToggleCart}
-          className={`w-full text-center font-semibold text-white py-3 rounded-md transition-colors text-sm sm:text-base ${
+          className={`w-full text-center font-semibold text-white py-3 rounded-md transition-colors text-sm sm:text-base mt-20 ${
             added ? 'bg-green-600 hover:bg-green-700' : 'bg-pink-700 hover:bg-pink-800'
           }`}
         >
@@ -91,12 +118,3 @@ const ProductViewPage = () => {
 };
 
 export default ProductViewPage;
-
-
-
-
-
-
-
-
-

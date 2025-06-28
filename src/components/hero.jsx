@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import fireIcon from '../assets/fire.png';
 import dotsImage from '../assets/dots.png';
 import sneakerImage from '../assets/White-Sneakers-PNG.png';
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -39,7 +38,7 @@ const Hero = () => {
       );
     }, 2000);
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, [slides.length]);
 
   const goToProducts = () => {
@@ -62,17 +61,18 @@ const Hero = () => {
             Melhores ofertas personalizadas:
           </p>
 
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-neutral-900 leading-snug mb-6">
-          Queima de Estoque{' '}
-          <span className="inline-flex items-center gap-2">
-          Nike
-            <img
-              src={fireIcon}
-              alt="Ícone de fogo"
-              className="w-16 h-16 md:w-19 md:h-18 inline-block"
-            />
-          </span>
-        </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-neutral-900 leading-snug mb-6">
+            Queima de Estoque{' '}
+            <span className="inline-flex items-center gap-2">
+              Nike
+              <img
+                src={fireIcon}
+                alt="Ícone de fogo"
+                className="w-16 h-16 md:w-19 md:h-18 inline-block"
+                loading="lazy"
+              />
+            </span>
+          </h1>
 
           <p className="text-gray-600 text-sm md:text-base font-normal mb-6 max-w-xl mx-auto lg:mx-0">
             {current.description}
@@ -80,7 +80,8 @@ const Hero = () => {
 
           <button
             onClick={goToProducts}
-            className="bg-pink-600 hover:bg-pink-700 text-white px-12 py-2 rounded-lg font-semibold transition"
+            className="bg-pink-600 hover:bg-pink-700 text-white px-12 py-2 rounded-lg font-semibold transition-all duration-200"
+            aria-label="Ver ofertas"
           >
             Ver Ofertas
           </button>
@@ -91,12 +92,14 @@ const Hero = () => {
             src={current.image}
             alt={current.title}
             className="w-full object-contain drop-shadow-xl transition-all duration-300"
+            loading="lazy"
           />
 
           <img
             src={dotsImage}
             alt="Pontinhos decorativos"
             className="hidden md:block absolute right-[-40px] top-[10%] w-[140px] h-[140px] pointer-events-none"
+            loading="lazy"
           />
         </div>
       </div>
@@ -118,7 +121,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-
-
-

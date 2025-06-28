@@ -19,19 +19,19 @@ const Gallery = ({ images, width = '100%', height = 'auto', radius = 'xl', showT
 
   return (
     <div className="relative w-full max-w-6xl mx-auto" style={{ height }}>
-
       <div className={`w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[680px] rounded-${radius} overflow-hidden`}>
         <img
           src={images[currentIndex].src}
           alt={`Slide ${currentIndex + 1}`}
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-center transition-opacity duration-300"
+          loading="lazy"
         />
       </div>
 
       <button
         onClick={handlePrev}
         disabled={currentIndex === 0}
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow disabled:opacity-30"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 transition-all duration-200 disabled:opacity-30"
         aria-label="Imagem anterior"
       >
         <img src={arrowLeft} alt="Anterior" />
@@ -40,7 +40,7 @@ const Gallery = ({ images, width = '100%', height = 'auto', radius = 'xl', showT
       <button
         onClick={handleNext}
         disabled={currentIndex === images.length - 1}
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow disabled:opacity-30"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 transition-all duration-200 disabled:opacity-30"
         aria-label="Próxima imagem"
       >
         <img src={arrowRight} alt="Próxima" />
@@ -66,11 +66,11 @@ const Gallery = ({ images, width = '100%', height = 'auto', radius = 'xl', showT
               key={index}
               src={image.src}
               alt={`Miniatura ${index + 1}`}
-              className={`w-20 h-16 object-cover border-2 cursor-pointer transition ${
+              className={`w-20 h-16 object-cover border-2 cursor-pointer transition-all duration-200 ${
                 currentIndex === index ? 'border-pink-600' : 'border-transparent'
               } rounded-${radius}`}
               onClick={() => setCurrentIndex(index)}
-              style={{ borderRadius: radius }}
+              loading="lazy"
             />
           ))}
         </div>
@@ -80,4 +80,3 @@ const Gallery = ({ images, width = '100%', height = 'auto', radius = 'xl', showT
 };
 
 export default Gallery;
-

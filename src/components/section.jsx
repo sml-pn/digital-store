@@ -7,7 +7,7 @@ const Section = ({
   titleColor = 'text-neutral-800',
 }) => {
   return (
-    <section className="mb-12 px-4 md:px-8">
+    <section className="mb-12 px-4 md:px-8 max-w-7xl mx-auto">
       <div
         className={`flex items-center mb-6 ${
           titleAlign === 'center' ? 'justify-center' : 'justify-between'
@@ -24,7 +24,8 @@ const Section = ({
         {link && titleAlign !== 'center' && (
           <a
             href={link.href}
-            className="flex items-center gap-1 text-pink-600 hover:text-pink-700 text-sm font-medium transition ml-auto"
+            className="flex items-center gap-1 text-pink-600 hover:text-pink-700 text-sm font-medium transition-colors duration-200 ml-auto"
+            aria-label={`Ver todos ${title.toLowerCase()}`}
           >
             {link.text}
             <svg

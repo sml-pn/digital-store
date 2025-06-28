@@ -2,6 +2,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import ProductCard from "../HomePage/productCard";
 
+{/* Controles para a grade de produtos-pag home*/ }
+
 const ProductListing = ({ products }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -12,24 +14,19 @@ const ProductListing = ({ products }) => {
   };
 
   const isHomePage = location.pathname === "/";
-  console.log("IDs dos produtos:", products.map(p => p.id));
-  products.forEach((product) => {
-    if (!product.id) {
-      console.warn("Produto sem ID:", product);
-    }
-  });
 
   return (
-    <section className="px-4 mb-12">
+    <section className="px-4 mb-12 max-w-7xl mx-auto">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-lg font-semibold">Produtos em destaque:</h2>
         {isHomePage && (
           <button
             onClick={handleViewAll}
-            className="text-pink-600 text-sm font-medium flex items-center gap-1 hover:text-pink-700 transition group"
+            className="text-pink-600 text-sm font-medium flex items-center gap-1 hover:text-pink-700 transition-all duration-200 group"
+            aria-label="Ver todos os produtos"
           >
             Ver todos
-            <HiArrowNarrowRight className="text-base transform group-hover:translate-x-1 transition-transform" />
+            <HiArrowNarrowRight className="text-base transform group-hover:translate-x-1 transition-transform duration-200" />
           </button>
         )}
       </div>
@@ -48,14 +45,3 @@ const ProductListing = ({ products }) => {
 };
 
 export default ProductListing;
-
-
-
-
-
-
-
-
-
-
-

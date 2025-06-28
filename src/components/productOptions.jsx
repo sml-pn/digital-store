@@ -22,6 +22,7 @@ const ProductOptions = ({ options, radius, shape, type }) => {
             fontSize: type === 'text' ? '24px' : '0',
             color: type === 'text' ? 'darkgray' : 'transparent',
           }}
+          aria-label={`Opção ${type === 'text' ? option : 'de cor'}`}
         >
           {type === 'text' && option}
         </div>

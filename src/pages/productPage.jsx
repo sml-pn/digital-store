@@ -2,10 +2,14 @@ import { useState } from 'react';
 import { products } from '../data/products';
 import ProductListingList from '../components/AbaProdutos/productListingList';
 import { Link, useLocation } from 'react-router-dom';
+import { FiFilter, FiX } from 'react-icons/fi';
+import Layout from './Layout';
+
 
 const ProductPage = () => {
   const [order, setOrder] = useState('menor-preco');
   const [filters, setFilters] = useState([]);
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get('filter')?.toLowerCase() || '';
@@ -47,8 +51,54 @@ const ProductPage = () => {
 
   return (
     <div className="flex flex-col lg:flex-row gap-8 px-4 sm:px-6 md:px-10 py-6 w-full">
+      {/* Filtro Mobile - Apenas para telas pequenas */}
+      <div className="lg:hidden w-full mb-4">
+  <div 
+    className="flex items-center justify-between bg-white p-4 rounded-lg shadow-md cursor-pointer border border-gray-200 active:scale-95 active:bg-gray-50 transition-transform duration-100"
+    onClick={() => setShowMobileFilters(!showMobileFilters)}
+  >
+    <div className="flex items-center">
+      <FiFilter className="text-pink-600 mr-2" />
+      <span className="font-medium text-gray-700">Filtrar por:</span>
+    </div>
+    <div className="flex items-center">
+      {filters.length > 0 && (
+        <span className="text-xs bg-pink-100 text-pink-800 px-2 py-1 rounded-full mr-2">
+          {filters.length}
+        </span>
+      )}
+      <FiX className={`text-gray-500 ${showMobileFilters ? 'block' : 'hidden'}`} />
+    </div>
+  </div>
 
-      <aside className="w-full lg:w-[280px] flex-shrink-0">
+        {showMobileFilters && (
+          <div className="mt-2 bg-white rounded-lg shadow-md p-4 border border-gray-200">
+            {allFilters.map((filter) => (
+              <div key={`mobile-${filter.label}`} className="mb-4">
+                <h4 className="text-xs text-gray-600 font-semibold mb-2">{filter.label}</h4>
+                <div className="flex flex-wrap gap-2">
+                  {filter.options.map((option) => (
+                    <button
+                      key={`mobile-${option}`}
+                      onClick={() => handleFilterChange(option)}
+                      className={`px-3 py-1 text-sm rounded-full border ${
+                        filters.includes(option)
+                          ? 'bg-pink-600 text-white border-pink-600'
+                          : 'bg-white text-gray-700 border-gray-300'
+                      }`}
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Filtro Desktop - Original */}
+      <aside className="hidden lg:block w-full lg:w-[280px] flex-shrink-0">
         <h3 className="text-gray-700 text-[16px] font-semibold mb-4">Filtrar por:</h3>
         {allFilters.map((filter) => (
           <div key={filter.label} className="mb-6">
@@ -71,7 +121,6 @@ const ProductPage = () => {
       </aside>
 
       <main className="flex-1 w-full">
-
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4 w-full flex-wrap">
           <span className="text-sm text-gray-500">
             {filters.length === 0 ? (
@@ -113,10 +162,3 @@ const ProductPage = () => {
 };
 
 export default ProductPage;
-
-
-
-
-
-
-

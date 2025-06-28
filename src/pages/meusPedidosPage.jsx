@@ -1,6 +1,8 @@
 import { useCart } from '../contexts/cartContext';
 import { useState } from 'react';
 import { FaQrcode, FaMoneyBillAlt, FaCreditCard } from 'react-icons/fa';
+import Layout from './Layout';
+
 
 const MeusPedidosPage = () => {
   const { cartItems, removeFromCart } = useCart();

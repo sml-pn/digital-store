@@ -1,4 +1,5 @@
-import logo from '../assets/logo-header.svg'; 
+import logo from '../assets/logo-header.svg';
+
 const Logo = () => {
   return (
     <img
@@ -6,6 +7,8 @@ const Logo = () => {
       alt="Digital Store Logo"
       width={253}
       height={44}
+      className="h-10 object-contain"
+      loading="eager"
     />
   );
 };

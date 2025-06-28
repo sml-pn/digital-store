@@ -6,7 +6,8 @@ import { PiBaseballCapLight, PiHeadphonesLight, PiPantsLight } from "react-icons
 import { GiConverseShoe } from "react-icons/gi";
 import airJordanImg from '../assets/Laye 1.png';
 import { useNavigate } from 'react-router-dom';
-
+import Layout from './Layout';
+import { products as allProducts } from '../data/products'; // Importe os produtos originais
 
 const categoryIcons = [
   { icon: <IoShirtOutline size={40} />, label: "Camisetas" },
@@ -16,59 +17,14 @@ const categoryIcons = [
   { icon: <GiConverseShoe size={40} />, label: "Tênis" },
 ];
 
-const products = [
-  {
-    id: 1,
-    name: "Nike Air Max 270",
-    image: "https://images.tcdn.com.br/img/img_prod/740066/tenis_nike_air_max_270_react_optical_preto_cinza_389_1_20200120160045.jpg",
-    price: 200,
-    priceDiscount: 149.9,
-  },
-  {
-    id: 2,
-    name: "Adidas Ultraboost",
-    image: "https://authenticfeet.vtexassets.com/arquivos/ids/434723-800-800?v=638562278565370000&width=800&height=800&aspect=true",
-    price: 200,
-  },
-  {
-    id: 3,
-    name: "Puma RS-X",
-    image: "https://a-static.mlcdn.com.br/800x560/tenis-puma-rs-x-3d-masculino/b2online/3943110242/53502c5bb7a4aca0addb96f6ac8635a6.jpeg",
-    price: 99.9,
-  },
-  {
-    id: 4,
-    name: "New Balance 574",
-    image: "https://cdn.bnws3.com.br/b2online.com.br/image/cache/data/produtos/new-balance/masculino/tenis-new-balance-574-v2-masculino-vinho---cinza-8784-24-01-24-00-1200x1200.jpg",
-    price: 150,
-    priceDiscount: 120,
-  },
-  {
-    id: 5,
-    name: "Asics Gel-Kayano",
-    image: "https://asicsbr.vteximg.com.br/arquivos/ids/2744214-1000-1000/null.jpg",
-    price: 75,
-  },
-  {
-    id: 6,
-    name: "Reebok Classic Leather",
-    image: "https://static.hupishop.com.br/public/hupibikes/imagens/produtos/tenis-reebok-classic-nylon-bege-feminino-667d9a2cdd458.jpg",
-    price: 30,
-  },
-  {
-    id: 7,
-    name: "Vans Old Skool",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzBJ4a69-eDi4bOCihhjxFyiC9WWKC9krq3A&s",
-    price: 200,
-    priceDiscount: 180,
-  },
-  {
-    id: 8,
-    name: "Converse Chuck Taylor",
-    image: "https://cloviscalcados.vteximg.com.br/arquivos/ids/1036233-1024-1024/Tenis-Masculino-Chuck-Taylor-Converse-All-Star-CT00040007-0320004_001-02.jpg?v=638364710577700000",
-    price: 250,
-  },
-];
+const products = allProducts.slice(0, 8).map(product => ({
+  id: product.id,
+  name: product.name || product.title,
+  image: product.image,
+  price: product.price,
+  priceDiscount: product.priceDiscount
+}));
+
 
 
 const HomePage = () => {
@@ -88,17 +44,20 @@ const HomePage = () => {
           Coleções em destaque:
         </h2>
 
-        <div className="grid sm:grid-cols-4 md:grid-cols-3 gap-3 px-2 md:px-20 lg:px-40 xl:px-58">
+        <div className="grid sm:grid-cols-3 md:grid-cols-3 gap-3 px-2 md:px-20 lg:px-40 xl:px-58">
           {[
             "/collection-1.png",
             "/collection-2.png",
             "/collection-3.png",
           ].map((image, index) => (
-            <div key={index} className="relative overflow-visible bg-white rounded-xl shadow aspect-square">
+            <div
+              key={index}
+              className="relative group bg-[#f6f6f6] rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden max-w-full max-h-[500px] w-auto h-auto"
+            >
               <img
                 src={image}
                 alt={`Coleção ${index + 1}`}
-                className="w-full h-full object-contain p-4"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute top-2 left-4 bg-lime-200 text-[12px] font-bold text-gray-900 px-3 py-[3px] rounded-full z-10">
                 30% OFF
@@ -116,17 +75,20 @@ const HomePage = () => {
         </div>
 
         <Section>
-          <div className="flex justify-center gap-6 flex-wrap px-4 md:px-0 mt-10">
+          <div className="flex justify-center gap-5 sm:gap-8 flex-wrap-1 px-6 md:px-1 mt-10 w-full">
             {categoryIcons.map((item, index) => (
               <div
                 key={index}
                 onClick={goToProducts}
-                className="flex flex-col items-center gap-2 cursor-pointer group"
+                className="flex flex-col items-center gap-2 cursor-pointer group w-[calc(25%-1rem)] sm:w-auto"
               >
-                <div className="w-24 h-24 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 group-hover:text-pink-600 transition-colors">
+                {/* Ícone/Círculo */}
+                <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 group-hover:text-pink-600 transition-colors duration-300">
                   {item.icon}
                 </div>
-                <span className="text-sm text-gray-700 font-medium group-hover:text-pink-600 transition-colors">
+
+                {/* Label */}
+                <span className="text-xs sm:text-sm text-gray-700 font-medium group-hover:text-pink-600 transition-colors duration-300 text-center px-1">
                   {item.label}
                 </span>
               </div>

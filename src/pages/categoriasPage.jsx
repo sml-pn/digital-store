@@ -1,25 +1,26 @@
 import { useNavigate } from 'react-router-dom';
+import Layout from './Layout';
 
 const categorias = [
   {
     nome: 'Camisetas',
-    imagem: 'https://images.mont.ink/mockups/51173/Marrom_3697018.png',
+    imagem: "/public/produc-image-1.jpeg",
   },
   {
     nome: 'Calças',
-    imagem: 'https://rivierawear.com.br/cdn/shop/files/S7818ae00b9084262835f54fff6d61f1fU.jpg?v=1688494129',
+    imagem: "/public/produc-image-1.jpeg",
   },
   {
     nome: 'Bonés',
-    imagem: 'https://images.tcdn.com.br/img/img_prod/1150285/bone_mst_281_1_b909645315b840b62fd488ca0dbafe07.jpg',
+    imagem: "/public/produc-image-1.jpeg",
   },
   {
     nome: 'Tênis',
-    imagem: 'https://images.tcdn.com.br/img/img_prod/1188746/tenis_converse_all_star_amarelo_13_2_2258f75d65c88dfdde8ca197da06720d.jpg',
+    imagem: "/public/produc-image-1.jpeg",
   },
   {
     nome: 'Headphones',
-    imagem: 'https://fastshopbr.vtexassets.com/arquivos/ids/498166/0-JBLLIVE770PTO-PRD-1500-1.jpg?v=638702103996270000',
+    imagem: "/public/produc-image-1.jpeg",
   },
 ];
 
@@ -31,18 +32,19 @@ const CategoriasPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-purple-100 py-16 px-4 sm:px-6 md:px-10">
+    <div className="min-h-screen bg-[#f6f6f6] py-16 px-4 sm:px-6 md:px-10">
       <h1 className="text-3xl sm:text-4xl font-extrabold text-center text-pink-600 mb-2 tracking-wide">
         Categorias:
       </h1>
-      <div className="h-1 w-24 bg-pink-600 mx-auto rounded-full mb-12"></div>
+      <div className="h-1 w-24 mx-auto rounded-full mb-12"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
         {categorias.map((cat) => (
           <div
             key={cat.nome}
             onClick={() => handleClick(cat.nome)}
-            className="bg-white rounded-2xl shadow-lg hover:shadow-2xl cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden flex flex-col"
+            className="bg-
+             rounded-2xl shadow-lg hover:shadow-2xl cursor-pointer transition-transform duration-300 hover:scale-105 overflow-hidden flex flex-col"
           >
             <img
               src={cat.imagem}

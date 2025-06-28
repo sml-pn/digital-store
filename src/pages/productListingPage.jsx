@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Layout from './layout';
+import Layout from './Layout';
 import Section from '../components/section';
 import ProductListingList from '../components/AbaProdutos/productListingList';
 
