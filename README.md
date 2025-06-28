@@ -1,60 +1,101 @@
-# 👟 Drip Store
+Drip Store - E-commerce
 
-Um e-commerce moderno desenvolvido com React, React Router e TailwindCSS. O projeto simula uma loja online com funcionalidades completas de navegação, pesquisa, visualização de produtos, filtros, carrosséis promocionais e carrinho de compras.
+Um e-commerce moderno e completo especializado em tênis esportivos e casuais, desenvolvido com as melhores tecnologias front-end.
 
 ## ✨ Funcionalidades
 
-- 🛍 Página inicial com carrossel de promoções automáticas
-- 🔥 Destaques de produtos com selo de desconto
-- 🧾 Página de listagem com filtros por categoria, gênero, marca e estado
-- 🧠 Filtro funcional por categoria (ex: “Tênis”)
-- 📦 Página de visualização detalhada do produto com imagens, tamanhos e cores
-- 🛒 Carrinho de compras com persistência via localStorage
-- ➕ Botões de “Adicionar ao carrinho” e “Ver mais” por produto
-- 🎯 Layout totalmente responsivo baseado em design Figma
-- 🖼 Imagens reais de produtos
+## 🛍 Experiência do Usuário
+Carrossel Automático de lançamentos e promoções
+Destaques Especiais com animação de produtos em destaque
+Loaders Especiais durante transições
 
-## ⚙️ Tecnologias
+## 🔍 Navegação Inteligente
 
-- ⚛️ React (com Vite)
-- 📦 React Router DOM
-- 🎨 TailwindCSS
-- 🗂 Context API
-- 🧠 JavaScript
-- 💾 localStorage para manter os itens do carrinho
+Pesquisa em tempo real com sugestões
+Filtros avançados por:
+Categoria (Esportivo, Casual, Skate, etc.)
+Tamanho (35-45)
+Cor (12 opções)
+Faixa de preço
+Histórico de produtos visualizados
 
-## 🚀 Como rodar o projeto
+## 🛒 Sistema de Compra
 
-### 💻 Instalação
+Carrinho persistente (localStorage)
+Multiplataforma (web e mobile)
+Calculadora de frete integrada
+Cupons de desconto
+Favoritos
 
-Clone o repositório e instale as dependências:
+## 📱 Totalmente Responsivo
 
-```bash```
-`npm install`
+Design Mobile-First
+Adaptável a tablets e desktops
+Touch-friendly para mobile
 
-## 👽 Desenvolvimento
+## 🛠 Tecnologias Utilizadas
 
-Inicie o servidor de desenvolvimento:
+## 🛠 Stack Tecnológico
 
-```bash```
-`npm run dev`
+### Frontend
+| Tecnologia       | Descrição                          |
+|------------------|------------------------------------|
+| React 18         | Biblioteca principal com hooks     |
+| Vite             | Build tool ultrarrápido            |
+| TailwindCSS      | Estilização com utility-first      |
+| React Router     | Navegação SPA                      |
+| Context API      | Gerenciamento de estado            |
+| React Icons      | Ícones premium                     |
+| Framer Motion    | Animações fluidas                  |
 
-Abra <http://localhost:5173> no navegador para visualizar a aplicação.
+## 🚀 Como Executar o Projeto
 
-## Outros ambientes suportados 👀
+Pré-requisitos
+Node.js 16+
+npm 8+ ou yarn 1.22+
+Git (opcional)
 
-Vercel
+## Instalação Local
 
-Netlify
+git clone https://github.com/sml-pn/drip-store.git
+cd drip-store
+npm install
+Ambientes
 
-Railway
+## Desenvolvimento
 
-Firebase Hosting
+npm run dev
+Acesse: http://localhost:5173
 
-GitHub Pages (com adaptações)
+## Produção
 
-🎨**Estilização:**
+npm run build
+npm run preview
+Testes
+bash
+npm test
 
-Este projeto utiliza TailwindCSS para estilização rápida, responsiva e moderna. Todos os componentes são mobile-first e adaptam-se dinamicamente ao tamanho da tela.
+## 📂 Estrutura de Arquivos
 
-Feito usando React + Tailwind por *Samuel Pena*
+src/
+├── assets/          # Imagens, fonts, etc.
+├── components/      # Componentes reutilizáveis
+├── contexts/        # Contextos globais
+├── hooks/           # Custom hooks
+├── pages/           # Páginas principais
+├── services/        # API services
+├── styles/          # Estilos globais
+├── utils/           # Funções utilitárias
+└── App.jsx          # Entrada principal
+
+## 🤝 Como Contribuir
+
+Faça um Fork do projeto
+Crie sua Branch (git checkout -b feature/AmazingFeature)
+Commit suas Mudanças (git commit -m 'Add some AmazingFeature')
+Push para a Branch (git push origin feature/AmazingFeature)
+Abra um Pull Request
+
+Link do Projeto: https://github.com/sml-pn/digital-store
+
+<p align="center"> Feito com ❤️ por <a href="https://github.com/sml-pn">Samuel Pena</a> </p> ```
