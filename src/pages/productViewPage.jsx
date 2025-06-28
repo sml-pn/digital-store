@@ -110,7 +110,7 @@ const ProductViewPage = () => {
             added ? 'bg-green-600 hover:bg-green-700' : 'bg-pink-700 hover:bg-pink-800'
           }`}
         >
-          {added ? 'Adicionado ao carrinho' : 'Adicionar ao carrinho'}
+          {added ? 'Adicionado ao carrinho ✓' : 'Adicionar ao carrinho'}
         </button>
       </div>
     </div>
